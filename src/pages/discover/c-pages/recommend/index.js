@@ -1,28 +1,21 @@
-import React, { memo, useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import React, { memo } from 'react'
 
-import { getTopBannerAction } from './store/actionCreators'
+import HYTopBanner from './c-cpns/top-banner'
+import HotRecommend from './c-cpns/hot-recommend'
+import { RecommendWrapper, Content, RecommendLeft, RecommendRight } from './style'
 
 function Recommend(props) {
-  //组件和redux关联，获取数据和进行操作
-  //shallowEqual：防止其他页面的强制刷新，影响性能
-  const { topBanners } = useSelector(
-    state => ({
-      // topBanners: state.recommend.topBanners => 导入immutable
-      // topBanners: state.recommend.get('topBanners')  =>  导入redux-immutable
-      // topBanners: state.get('recommend').get('topBanners')  ==
-      topBanners: state.getIn(['recommend', 'topBanners']) //先取recommend再取topBanners
-    }),
-    shallowEqual
+  return (
+    <RecommendWrapper>
+      <HYTopBanner></HYTopBanner>
+      <Content className="wrap-v2">
+        <RecommendLeft>
+          <HotRecommend></HotRecommend>
+        </RecommendLeft>
+        <RecommendRight></RecommendRight>
+      </Content>
+    </RecommendWrapper>
   )
-  const dispatch = useDispatch()
-
-  //发送请求
-  useEffect(() => {
-    dispatch(getTopBannerAction())
-  }, [dispatch])
-
-  return <div>Recommend:{topBanners.length}</div>
 }
 
 export default memo(Recommend)
