@@ -13,7 +13,7 @@ const ThemeHeaderRCM = memo(function (props) {
           {keywords.map((item, index) => {
             return (
               <div className="item" key={item}>
-                <a href="">{item}</a>
+                <a href="auto">{item}</a>
                 <span className="divider">|</span>
               </div>
             )
@@ -21,7 +21,7 @@ const ThemeHeaderRCM = memo(function (props) {
         </div>
       </div>
       <div className="right">
-        <a href="">更多</a>
+        <a href="auto">更多</a>
         <i className="icon sprite_02"></i>
       </div>
     </HeaderWrapper>

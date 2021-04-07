@@ -1,7 +1,24 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { ThemeHeaderRMC } from '@/components/theme-header-rmc'
+import { getNewAlbumAction } from '../../store/actionCreators'
 
-export default memo(function Album() {
-  return <ThemeHeaderRMC title="新碟上架"></ThemeHeaderRMC>
+import ThemeHeaderRCM from '@/components/theme-header-rcm'
+
+export default memo(function NewAlbum() {
+  const [albums, setAlbums] = useState([])
+
+  //redux hooks
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getNewAlbumAction(10))
+  }, [dispatch])
+
+  return (
+    <div>
+      <ThemeHeaderRCM title="新碟上架"></ThemeHeaderRCM>
+      <div></div>
+    </div>
+  )
 })
