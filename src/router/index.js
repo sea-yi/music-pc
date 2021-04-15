@@ -1,7 +1,8 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 //懒加载
-const Discover = Rreact.lazy(() => import('@/pages/discover'))
+const Discover = React.lazy(() => import('@/pages/discover'))
 const Recommend = React.lazy(_ => import('../pages/discover/c-pages/recommend'))
 const Ranking = React.lazy(_ => import('../pages/discover/c-pages/ranking'))
 const Songs = React.lazy(_ => import('../pages/discover/c-pages/songs'))
@@ -24,7 +25,6 @@ const Mine = React.lazy(_ => import('../pages/mine'))
 
 // import Mine from '@/pages/mine'
 // import Friend from '@/pages/friend'
-import { Redirect } from 'react-router-dom'
 
 const routes = [
   {
