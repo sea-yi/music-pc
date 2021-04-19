@@ -21,12 +21,13 @@ export default memo(function AppPlayerBar() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   //redux hooks
-  const { currentSong, sequence, lyricList, currentLyricIndex } = useSelector(
+  const { currentSong, sequence, lyricList, currentLyricIndex, playList } = useSelector(
     state => ({
       currentSong: state.getIn(['player', 'currentSong']),
       sequence: state.getIn(['player', 'sequence']),
       lyricList: state.getIn(['player', 'lyricList']),
-      currentLyricIndex: state.getIn(['player', 'currentLyricIndex'])
+      currentLyricIndex: state.getIn(['player', 'currentLyricIndex']),
+      playList: state.getIn(['player', 'playList'])
     }),
     shallowEqual
   )
@@ -181,7 +182,7 @@ export default memo(function AppPlayerBar() {
           <div className="right sprite_player">
             <button className="sprite_player btn volume"></button>
             <button className="sprite_player btn loop" onClick={e => changeSequence()}></button>
-            <button className="sprite_player btn playlist"></button>
+            <button className="sprite_player btn playlist">{playList.length}</button>
           </div>
         </Operator>
       </div>

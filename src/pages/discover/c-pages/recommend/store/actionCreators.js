@@ -1,6 +1,6 @@
 import * as actionTypes from './constants'
 
-import { getTopBanners, getHotRecommends, getNewAlbums } from '@/services/recommend'
+import { getTopBanners, getHotRecommends, getNewAlbums, getArtistList } from '@/services/recommend'
 import { getTopList } from '@/services/recommend'
 
 const changeTopBannerAction = res => ({
@@ -31,6 +31,11 @@ const changeNewRakingAction = res => ({
 const changeOriginRakingAction = res => ({
   type: actionTypes.CHANGE_ORIGIN_RANKING,
   originRanking: res.playlist
+})
+
+const changeSettleSingersAction = res => ({
+  type: actionTypes.CHANGE_SETTLE_SINGER,
+  settleSingers: res.artists
 })
 
 export const getTopBannerAction = () => {
@@ -67,16 +72,25 @@ export const getTopListAction = idx => {
     getTopList(idx).then(res => {
       switch (idx) {
         case 0:
-          dispatch(changeUpRakingAction(res))
-          break
-        case 2:
           dispatch(changeNewRakingAction(res))
           break
-        case 3:
+        case 2:
           dispatch(changeOriginRakingAction(res))
+          break
+        case 3:
+          dispatch(changeUpRakingAction(res))
           break
         default:
       }
+    })
+  }
+}
+
+export const getSettleSingersAction = () => {
+  return dispatch => {
+    getArtistList(5).then(res => {
+      console.log(res)
+      dispatch(changeSettleSingersAction(res))
     })
   }
 }
