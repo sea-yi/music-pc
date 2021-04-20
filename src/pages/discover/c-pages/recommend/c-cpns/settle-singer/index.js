@@ -29,7 +29,7 @@ export default memo(function SettleSinger() {
         {state.settleSingers.map((item, index) => {
           return (
             <a href="auto" key={item.id} className="item">
-              <img src={getSizeImage(item.img1v1Url, 62)}></img>
+              <img src={getSizeImage(item.img1v1Url, 62)} alt=""></img>
               <div className="info">
                 <div className="title">{item.alias.join('') || item.name}</div>
                 <div className="name">{item.name}</div>
