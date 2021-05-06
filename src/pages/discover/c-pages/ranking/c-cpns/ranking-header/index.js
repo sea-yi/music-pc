@@ -21,10 +21,10 @@ export default memo(function RankingHeader() {
     <RankingHeaderWrapper>
       <div className="image">
         <img src={topInfo.coverImgUrl} alt=""></img>
-        {/* <span className="image_cover">封面</span> */}
+        <span className="image_cover"></span>
       </div>
       <div className="info">
-        <div className="title"></div>
+        <div className="title">{topInfo.name}</div>
         <div className="time">
           <i className="clock sprite_icon2"></i>
           <div>最近更新：{formatMonthDay(topInfo.updateTime)}</div>
