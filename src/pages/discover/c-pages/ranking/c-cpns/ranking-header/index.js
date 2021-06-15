@@ -4,6 +4,7 @@ import { shallowEqual, useSelector } from 'react-redux'
 import { formatMonthDay } from '@/utils/format-utils'
 
 import { RankingHeaderWrapper } from './style'
+import SongOperationBar from '@/components/song-operation-bar'
 
 export default memo(function RankingHeader() {
   const state = useSelector(
@@ -30,6 +31,12 @@ export default memo(function RankingHeader() {
           <div>最近更新：{formatMonthDay(topInfo.updateTime)}</div>
           <div className="update-f">（{updateFrequency}）</div>
         </div>
+        <SongOperationBar
+          favorTitle={`(${topInfo.subscribedCount})`}
+          shareTitle={`(${topInfo.shareCount})`}
+          downloadTitle="下载"
+          commentTitle={`(${topInfo.commentCount})`}
+        />
       </div>
     </RankingHeaderWrapper>
   )
