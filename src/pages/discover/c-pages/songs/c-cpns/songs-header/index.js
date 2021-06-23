@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { shallowEqual, useSelector } from 'react-redux'
 
 import { SongsHeaderWrapper, SongsHeaderRight, SongsHeaderLeft } from './style'
+import SongsCategory from '../songs-category'
 
 export default memo(function SongsHeader() {
   const [showCategory, setShowCategory] = useState(false)
@@ -22,6 +23,7 @@ export default memo(function SongsHeader() {
           <span>选择分类</span>
           <i className="sprite_icon2"></i>
         </button>
+        {showCategory ? <SongsCategory /> : null}
       </SongsHeaderLeft>
       <SongsHeaderRight>
         <button className="hot">热门</button>

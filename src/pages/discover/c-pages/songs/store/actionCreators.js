@@ -12,7 +12,7 @@ const changeCategoryAction = res => ({
 
 const changeSongListAction = res => ({
   type: actionTypes.CHANGE_CATEGORY_SONGS,
-  category: res
+  categorySongs: res
 })
 
 export const changeCurrentCategoryAction = name => ({
@@ -37,6 +37,7 @@ export const getSongList = page => {
 
     //2.获取数据
     getSongCategoryList(name, page * PER_PAGE_NUMBER).then(res => {
+      console.log(res)
       dispatch(changeSongListAction(res))
     })
   }
